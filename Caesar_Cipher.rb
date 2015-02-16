@@ -21,19 +21,19 @@
 
 
 
-def caesar_cipher text, shift = 5 										#shifts letters by 5 - by default
+def caesar_cipher text, shift = 5 				#shifts letters by 5 - by default
 	letters = text.split(//)
 	ncrypted_string = ""
 
 	letters.each do |x|
-		if (x =~ /\w/) && (x =~ /\D/) && (x != "_") ##Checks with RegEx's whether the current array index' value is a word character + a non-digit character + not an underscore '_', so only a-z & A-Z letters pass the test and are affected by the following code.
-			if x == x.upcase						##<-I do this so I can wrap back to A when Z's #ord index is exceeded. "A".ord == 65, "Z".ord == 90
+		if (x =~ /\w/) && (x =~ /\D/) && (x != "_") 	##Checks with RegEx's whether the current array index' value is a word character + a non-digit character + not an underscore '_', so only a-z & A-Z letters pass the test and are affected by the following code.
+			if x == x.upcase			##<-I do this so I can wrap back to A when Z's #ord index is exceeded. "A".ord == 65, "Z".ord == 90
 				x = x.ord + shift
 				if x > 90
 					x -= 90
 					x += 64
 				end
-			elsif x == x.downcase					##Same is done here for downcases as is done above for upcases. "a".ord == 97, "z".ord == 122
+			elsif x == x.downcase			##Same is done here for downcases as is done above for upcases. "a".ord == 97, "z".ord == 122
 				x = x.ord + shift
 				if x > 122
 					x -= 122
@@ -47,7 +47,7 @@ def caesar_cipher text, shift = 5 										#shifts letters by 5 - by default
 	puts ncrypted_string
 end
 
-caesar_cipher("What a string!", 5)					##should modify everything except the ending '!' and the whitespaces
+caesar_cipher("What a string!", 5)				##should modify everything except the ending '!' and the whitespaces
 
 caesar_cipher("abCDEfg!! __ -- ^^ 77 // ¨¨ ~~", 1)	#Should only modify the leading "abCDEfg"
 
